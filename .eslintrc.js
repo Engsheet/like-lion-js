@@ -24,7 +24,7 @@ module.exports = {
     },
     "rules": {
         // "no-unused-vars": "off"
-        "no-unused-vars": "warn"
+        "no-unused-vars": 0
         // off, warn, error -> 0, 1, 2 로 표현 가능
     }
 }
