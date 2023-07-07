@@ -102,6 +102,8 @@ function getDay(dayValue) {
   }
 }
 
+console.log();
+// 주말 거르는 함수
 function isWeekend(dayValue) {
   const today = getDay(getRandom(dayValue));
   console.log(today);

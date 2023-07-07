@@ -2,15 +2,15 @@
 /* Logical Operators   */
 /* ------------------- */
 
-let a = 10; // true
-let b = ''; // false
+let a = 10; 
+let b = ''; 
 let value = Boolean(b);
 
 // 논리곱(그리고) 연산자
-let AandB = a && b;
+let AandB = a && b; // ''
 
 // 논리합(또는) 연산자
-let AorB = a || b;
+let AorB = a || b; // 10
 
 // 부정 연산자
 let reverseValue = !value;
@@ -18,7 +18,7 @@ let reverseValue = !value;
 // 조건 처리
 
 // 첫번째 Falsy를 찾는 연산 (&&)
-let whichFalsy = true && ' ' && [] && { thisIsFalsy: false };
+let whichFalsy = true && ' ' && [] && { thisIsFalsy: false }; // { ... }
 
 // 첫번째 Truthy를 찾는 연산 (||)
-let whichTruthy = false || '' || [2, 3].length || { thisIsTruthy: true };
+let whichTruthy = false || '' || [2, 3].length || { thisIsTruthy: true }; // 2

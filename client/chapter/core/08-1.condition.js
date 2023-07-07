@@ -49,12 +49,14 @@ if (!didWatchMovie) {
     let withWho = prompt('누구랑 볼거니?', '');
 
     if (withWho === '여자친구') {
-      console.log('zzz');
+      console.log('ㅋㅋㅋ');
     } else if (withWho === '가족') {
       console.log('화목하네');
     } else {
       console.log('재밌게보구와~~~~');
     }
+  } else {
+    console.log('영화 재밌던데...');
   }
 } else {
   let alone = confirm('너 혼자 봤니?');
@@ -66,6 +68,16 @@ if (!didWatchMovie) {
       console.log('너..찌질했네..');
     } else {
       console.log('너 T야?');
+    }
+  } else {
+    let withWho = prompt('누구랑 봤어?', '');
+
+    if (withWho === '여자친구') {
+      console.log('ㅋㅋㅋ');
+    } else if (withWho === '가족') {
+      console.log('화목하네');
+    } else {
+      console.log('재밌었겠네');
     }
   }
 }

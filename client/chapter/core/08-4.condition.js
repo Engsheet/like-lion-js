@@ -50,4 +50,5 @@ x ??= y // x가 undefined, null 일 때 y값을 x에 할당
 let title;
 
 title ||= '제목입니다.'
-console.log(title);
+// title = title || '제목입니다.'
+console.log(title); // '제목입니다.'
