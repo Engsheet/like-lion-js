@@ -47,7 +47,14 @@ for (let key in javaScript) {
 // - 배열 객체 순환에 사용할 경우?
 
 const tens = [10, 100, 1000, 10000];
+console.log(tens);
 
 for (let key in tens) {
-  console.log(tens);
+  console.log(tens[key]);
+}
+
+for (let keys in tens) {
+  if ({}.hasOwnProperty.call(tens, keys)) {
+    console.log(tens[keys]);
+  }
 }
