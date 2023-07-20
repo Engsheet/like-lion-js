@@ -1,9 +1,3 @@
-/* eslint-disable */
+import { getNode } from './lib/index.js'
 
-console.log('hello js!');
-
-const a = 10;
-
-/* eslint-enable */
-
-const b = 10;
+getNode()
