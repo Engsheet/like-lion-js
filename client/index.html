@@ -5,24 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
-    <script src="chapter/core/21.tryCatch.js" defer></script>
+    <script src="lib/dom/getNode.js" defer></script>
+    <script src="lib/dom/attr.js" defer></script>
+    <script src="lib/dom/insert.js" defer></script>
+    <script src="lib/dom/css.js" defer></script>
+    <script src="lib/dom/bindEvent.js" defer></script>
+    <script src="chapter/dom/09.delegation.js" defer></script>
     <title>범쌤과 함께하는 자바스크립트</title>
   </head>
   <body>
     <h1>
-      <span class="first">Hello</span>
+      <span
+        class="first"
+        id="message"
+        data-size="10"
+        data-tab-index="1"
+        animation="playing"
+        >hello</span
+      >
       <!-- 주석입니다. -->
-      <span class="second">JavaScript</span>
+      <span class="second">javascript</span>
     </h1>
 
+    <ul class="todo"></ul>
+
+    <div>
+      <label for="todo"></label>
+      <input type="text" id="todo" />
+    </div>
+
+    <button>button</button>
+    <!-- <label for="todo">할일</label>
+    <input type="text" id="todo" />
+
+    <button class="register">등록</button>
+
+    <h4>해야할 목록</h4>
+    <ul class="todoList"></ul> -->
+
+    <!-- <video id="videoElement" autoplay></video> -->
+
+    <!-- <nav>
+      <ul>
+        <li><button>A</button></li>
+        <li><button>B</button></li>
+        <li><button>C</button></li>
+        <li><button>D</button></li>
+      </ul>
+    </nav> -->
+
+    <!-- ----------------------------------------------------------------------- -->
+
+    <!-- 7. event -->
+    <div class="ground">
+      <img src="https://en.js.cx/clipart/ball.svg" alt="축구공" id="ball" />
+    </div>
+
+    <!-- 8. bubble -->
+    <section>
+      section
+      <article>
+        article
+        <p>p</p>
+      </article>
+    </section>
+
+    <!-- 9. deligation -->
     <div class="container">
-      <section>
-        <h1 class="heading">
-        </h1>
-        <div></div>
-        <p></p>
-      </section>
+      <ul class="container">
+        <li class="home" data-name="home">
+          <span>🏠</span><button>Home</button>
+        </li>
+        <li class="about" data-name="about">
+          <span>👦</span><button>About</button>
+        </li>
+        <li class="project" data-name="project">
+          <span>⭐️</span><button>Project</button>
+        </li>
+        <li class="contact" data-name="contact">
+          <span>📞</span><button>Contact</button>
+        </li>
+      </ul>
     </div>
   </body>
-  <button>11</button>
 </html>
