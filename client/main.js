@@ -13,6 +13,7 @@ import { jujeobData } from './data/data.js';
 const submit = getNode('#submit');
 const nameField = getNode('#nameField');
 const resultArea = getNode('.result');
+let state = false;
 
 // [phase-1]
 // 1. 주접 떨기 버튼을 클릭할 수 있는 핸들러 연결하기
@@ -42,31 +43,40 @@ function handleSubmit(e) {
   if (!name || name.replace(/\s*/g, '') === '') {
     showAlert('.alert-error', '이름을 입력해주세요!', 2000);
     shake.restart();
+    state = false;
     return;
   }
 
   if (!isNumericString(name)) {
     showAlert('.alert-error', '제대로 된 이름이 아닙니다!', 2000);
     shake.restart();
+    state = false;
     return;
   }
 
+  state = true;
   clearContents(resultArea);
   insertLast(resultArea, pick);
 }
 
 /* -------------------------------------------------------------------------- */
-// 과제 - 이름을 제대로 입력했을 때, 클립보드에 복사가 될 수 있도록 하기
-// let state = false;
+//! 과제 - 이름을 제대로 입력했을 때, 클립보드에 복사가 될 수 있도록 하기
 // state = true;
 // if(state) {...logic}
 
 function handleCopy() {
   const text = resultArea.textContent;
-  //? then
-  copy(text).then(() => {
-    showAlert('.alert-success', '클립보드에 복사하였습니다!');
-  });
+  if (state === true) {
+    //? then
+    copy(text).then(() => {
+      showAlert('.alert-success', '클립보드에 복사하였습니다!');
+    });
+  } else {
+    copy(text).then(() => {
+      showAlert('.alert-error', '제대로 된 이름이 아닙니다!');
+      shake.restart();
+    })
+  }
 }
 
 submit.addEventListener('click', handleSubmit);
