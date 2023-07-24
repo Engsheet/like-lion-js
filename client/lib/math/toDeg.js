@@ -1,22 +1,3 @@
-
-
-
-
-
-
-export function toDeg(radian){
-  return radian * (180 / Math.PI)
+export function toDeg(radian) {
+  return radian * (180 / Math.PI);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -63,7 +63,7 @@
 
 // attr()
 
-import { getNode } from "./getNode.js";
+import { getNode } from './getNode.js';
 
 function getAttr(node, prop) {
   // 0. 넘어온 대상이 문자인지를 체크
@@ -106,9 +106,6 @@ function setAttr(node, prop, value) {
 const arrowAttr = (node, prop, value) =>
   !value ? getAttr(node, prop) : setAttr(node, prop, value);
 
-
-
-
 export function attr(node, prop, value) {
   // if(!value){
   //   return getAttr(node,prop);
@@ -118,16 +115,3 @@ export function attr(node, prop, value) {
 
   return !value ? getAttr(node, prop) : setAttr(node, prop, value);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
