@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "npx live-server client --host=localhost --port=5500 --no-browser",
+    "start": "live-server client --host=localhost --port=5500 --mount=/node_modules:./node_modules",
     "serve": "node server/index.js"
   },
   "devDependencies": {
