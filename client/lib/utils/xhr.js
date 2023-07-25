@@ -1,4 +1,4 @@
-function xhr({
+export function xhr({
   method = 'GET',
   url = '',
   onSuccess = (result) => {
