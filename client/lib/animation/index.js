@@ -1,3 +1,3 @@
 // re-export
 
-export * from './shake.js';
+export * from './dice.js';
