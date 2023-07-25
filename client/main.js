@@ -10,6 +10,7 @@ import {
   disableElement,
   visibleElement,
   invisibleElement,
+  memo,
 } from './lib/index.js';
 // [phase-1] 주사위 굴리기
 // 1. dice animation 불러오기
@@ -49,7 +50,9 @@ function handleDiceRoll(e) {
 
 const [startButton, recordButton, resetButton] = getNodes('.buttonGroup > button');
 const recordListWrapper = getNode('.recordListWrapper');
-const tbody = '.recordList tbody';
+// const tbody = '.recordList tbody';
+memo('@tbody', () => getNode('.recordList tbody')) // setter
+memo('@tbody') // getter
 
 // 즉시 실행 함수 표현식 (IIFE) => 함수를 즉시 실행
 const handleRollingDice = (() => {
@@ -92,8 +95,8 @@ function createItem(value) {
 
 function renderRecordItem() {
   // cube 요소의 data-dice 값 가져오기
-  const diceValue = +attr('#cube', 'data-dice');
-  insertLast(tbody, createItem(diceValue));
+  const diceValue = +attr(memo('cube'), 'data-dice');
+  insertLast(memo('@tbody'), createItem(diceValue));
   endScroll(recordListWrapper);
 }
 
@@ -109,7 +112,7 @@ const handleReset = () => {
   disableElement(recordButton);
   disableElement(resetButton);
 
-  clearContents(tbody);
+  clearContents(memo('@tbody'));
   count = 0;
   total = 0;
 };
