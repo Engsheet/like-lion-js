@@ -20,7 +20,7 @@ function xhr(method, url) {
   //# open : 링크의 xhr 정보 호출
   xhr.open(method, url);
 
-  //* state 가 변경될 때마다 이벤트를 호출
+  //# readystatechange : state 가 변경될 때마다 이벤트를 호출
   xhr.addEventListener('readystatechange', () => {
     // 구조 분해 할당
     const { status, readyState, response } = xhr;
