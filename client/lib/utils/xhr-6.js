@@ -116,11 +116,16 @@ const defaultOptions = {
   },
 };
 
-export function xhrPromise(options) {
+function xhrPromise(options) {
+  // mixin
+
+  // const config = {...defaultOptions, ...Options}
   let { method, url, body, errorMessage, headers } = {
     ...defaultOptions,
     ...options,
   };
+  //# Object.assign : 객체 복사 (첫번째 전달인자에 반드시 빈 객체를 넣어줘야 함)
+  // config = Object.assign({}, defaultOptions, options)
 
   if (!url) refError('서버와 통신할 url은 필수 값입니다.');
 
@@ -148,7 +153,19 @@ export function xhrPromise(options) {
 
 /* -------------------------------------------------------------------------- */
 
+/* xhrPromise({
+  url: 'https://jsonplaceholder.typicode.com/users',
+}).then((result) => {
+  result.forEach(item => console.log(item))
+}); */
+
+//* get 메서드를 통해 url 을 전달 -> url은 함수의 인수로 들어감
+// 함수가 실행되면 함수의 실행으로 인해 도출된 결과 값이 존재함
+// xhrPromise({ url }) 는 Promise 객체가 값으로 들어간 상태
+// 단, xhrPromise.get 이 함수이기 때문에 return 이 없으면 결과값을 추출할 수 없음
+
 xhrPromise.get = (url) => {
+  // xhrPromise 에서 return 되는 Promise 객체를 다시 return 해야만 추출할 수 있음
   return xhrPromise({ url });
 };
 
@@ -163,3 +180,8 @@ xhrPromise.delete = (url) => {
 xhrPromise.put = (url, body) => {
   return xhrPromise({ method: 'PUT', url, body });
 };
+
+/* xhrPromise.get('https://jsonplaceholder.typicode.com/users') // undefined
+  .then((res) => {
+  console.log(res);
+}) */
