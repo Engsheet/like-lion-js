@@ -1,9 +1,17 @@
-/* eslint-disable */
+import { getNode as $, setStorage, getStorage } from './lib/index.js';
 
-console.log('hello js!');
+const textField = $('#textField');
 
-const a = 10;
+function handleTextField() {
+  const value = this.value;
+  setStorage('text', value);
+}
 
-/* eslint-enable */
+function init() {
+  getStorage('text').then((res) => {
+    textField.value = res;
+  });
+}
 
-const b = 10;
+textField.addEventListener('input', handleTextField);
+window.addEventListener('DOMContentLoaded', init);

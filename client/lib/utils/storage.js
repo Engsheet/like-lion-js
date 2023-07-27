@@ -12,6 +12,7 @@ export function setStorage(key, value) {
     }
   });
 }
+setStorage("name", "live")
 
 /* -------------------------------------------------------------------------- */
 
@@ -24,6 +25,7 @@ export function getStorage(key) {
     }
   });
 }
+getStorage('name');
 
 /* -------------------------------------------------------------------------- */
 
@@ -33,3 +35,4 @@ export function deleteStorage(key) {
     resolve();
   });
 }
+deleteStorage('text')
