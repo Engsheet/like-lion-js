@@ -1,6 +1,7 @@
 /* global gsap */
 import {
   bunny as tiger,
+  attr,
   getNode as $,
   renderUserCard,
   changeColor,
@@ -22,6 +23,10 @@ import {
 
 // [phase-2]
 // 에러 발생 시, empty svg 생성 및 랜더링
+
+// [phase-3]
+// 1. 이벤트 위임
+// 2. 삭제 버튼 클릭 시 해당 카드 삭제
 
 /* -------------------------------------------------------------------------- */
 
@@ -57,3 +62,21 @@ async function renderUserList() {
 }
 
 renderUserList();
+
+/* Card Delete -------------------------------------------------------------- */
+
+function handleDelete(e) {
+  const button = e.target.closest('button');
+  const article = e.target.closest('article')
+
+  if (!article || !button) return;
+
+  //# 방법1 : attr / 방법2 : dataset
+  const id = attr(article, 'data-index').slice(5);
+  // const id = article.dataset.index
+  // console.log(id);
+
+  tiger.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+}
+
+userCardInner.addEventListener('click', handleDelete);
