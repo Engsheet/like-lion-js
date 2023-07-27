@@ -1,5 +1,15 @@
 /* global gsap */
-import { bunny as tiger, getNode as $, renderUserCard, changeColor, delayP } from './lib/index.js';
+import {
+  bunny as tiger,
+  getNode as $,
+  renderUserCard,
+  changeColor,
+  delayP,
+  renderSpinner,
+  renderError,
+} from './lib/index.js';
+
+/* -------------------------------------------------------------------------- */
 
 // [phase-1]
 // 1. tiger 함수를 사용해서 user를 가져와 주세요.
@@ -10,32 +20,40 @@ import { bunny as tiger, getNode as $, renderUserCard, changeColor, delayP } fro
 //      - insertLast 사용하기.
 // 4. 함수 분리 하기
 
+// [phase-2]
+// 에러 발생 시, empty svg 생성 및 랜더링
+
+/* -------------------------------------------------------------------------- */
+
 const userCardInner = $('.user-card-inner');
 
 async function renderUserList() {
+  renderSpinner(userCardInner);
 
   try {
-    await delayP()
-  
+    await delayP();
+    gsap.to('.loadingSpinner', {
+      opacity: 0,
+      onComplete() {
+        $('.loadingSpinner').remove();
+      },
+    });
+
+    await delayP(600);
     const response = await tiger.get('https://jsonplaceholder.typicode.com/users');
-  
     const userData = response.data;
-  
-    userData.forEach((item) => renderUserCard(userCardInner, item));
-  
-    // 어디에 랜더링 할껀데? 어떤 데이터를 랜더링 할껀데?
-  
+
+    userData.forEach(i => renderUserCard(userCardInner, i));
+
     changeColor('.user-card');
-  
     gsap.to('.user-card', {
       x: 0,
       opacity: 1,
       stagger: 0.1,
     });
   } catch (error) {
-    console.log(error);
+    renderError(userCardInner);
   }
-
 }
 
 renderUserList();
