@@ -14,10 +14,4 @@ export function bindEvent(node, type, handler) {
   node.addEventListener(type, handler);
 
   return () => node.removeEventListener(type, handler);
-
-  // function tiger() {
-  //   return node.removeEventListener(type,handler)
-  // }
-
-  // return tiger;
 }
