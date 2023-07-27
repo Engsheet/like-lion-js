@@ -33,7 +33,7 @@ h2 {
   transform: translateX(-50%);
   min-width: 400px;
   z-index: 100;
-  background: white;
+  background: transparent;
 }
 
 .loadingSpinner svg {
@@ -56,7 +56,7 @@ h2 {
   /* transition: all 0.3s; */
 }
 
-.empty-user-card {
+.error-user-card {
   /* width: 100%; */
   /* border: 1px solid black; */
   /* background: #dbdbdb; */
