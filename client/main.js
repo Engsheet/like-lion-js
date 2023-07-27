@@ -8,6 +8,7 @@ import {
   delayP,
   renderSpinner,
   renderError,
+  clearContents,
 } from './lib/index.js';
 
 /* -------------------------------------------------------------------------- */
@@ -28,6 +29,12 @@ import {
 // 1. 이벤트 위임
 // 2. 삭제 버튼 클릭 시 해당 카드 삭제
 
+// [phase-4]
+// json-server 구성
+// data 설계
+// get, delete 통신 localhost
+// delete => 리랜더링(clear,render)
+
 /* -------------------------------------------------------------------------- */
 
 const userCardInner = $('.user-card-inner');
@@ -45,7 +52,7 @@ async function renderUserList() {
     });
 
     await delayP(600);
-    const response = await tiger.get('https://jsonplaceholder.typicode.com/users');
+    const response = await tiger.get('http://localhost:3000/users');
     const userData = response.data;
 
     userData.forEach(i => renderUserCard(userCardInner, i));
@@ -76,7 +83,12 @@ function handleDelete(e) {
   // const id = article.dataset.index
   // console.log(id);
 
-  tiger.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+  tiger.delete(`http://localhost:3000/users/${id}`)
+    .then(() => {
+      // 컨텐츠 항목 전체 지우기
+      clearContents(userCardInner)
+      renderUserList();
+  });
 }
 
 userCardInner.addEventListener('click', handleDelete);
